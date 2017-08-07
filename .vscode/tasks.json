@@ -1,0 +1,71 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+
+    "tasks": [
+        {
+            "label": "create",
+            "type": "shell",
+            "command": "/bin/bash",
+            "problemMatcher": [],
+            "windows": {
+                "args": [
+                    "create.bat"
+                ]
+            },
+            "osx": {
+                "args": [
+                    "create.sh"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "create.sh"
+                ]
+            }
+        },
+        {
+            "label": "compile",
+            "type": "shell",
+            "command": "/bin/bash",
+            "problemMatcher": [],
+            "windows": {
+                "args": [
+                    "compile.bat"
+                ]
+            },
+            "osx": {
+                "args": [
+                    "compile.sh"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "compile.sh"
+                ]
+            }
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "/bin/bash",
+            "problemMatcher": [],
+            "windows": {
+                "args": [
+                    "clean.bat"
+                ]
+            },
+            "osx": {
+                "args": [
+                    "clean.sh"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "clean.sh"
+                ]
+            }
+        }
+    ]
+}
