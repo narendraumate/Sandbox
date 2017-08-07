@@ -1,0 +1,3 @@
+- [ ] RiddleZa Native Linux
+- [x] RiddleZa Native MacOS
+- [ ] RiddleZa Native Windows
