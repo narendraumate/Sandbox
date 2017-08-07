@@ -1,0 +1,26 @@
+# Common
+*.dot
+Build/
+
+# Windows
+desktop.ini
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.opendb
+*.db
+*.sln
+.vs/
+.vscode/ipch/
+
+# Macintosh
+Metal.hpp
+Metal.cpp
+.DS_Store
+.idea/
+*.xcodeproj/
+*.xcworkspace/
+
+# Linux
+Makefile
+*.make
