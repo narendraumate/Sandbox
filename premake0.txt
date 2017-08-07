@@ -1,0 +1,15 @@
+premake4 must be deprecated but was used for the travis ci linux build machines despite glob issues.
+glob issues make it so that if a folder is excluded then children could not be added in selectively.
+the issue should be reproducible on all three platforms but i only saw it on mac and linux in repro.
+
+premake5 bugs are blocking the upgrade. clean operation is missing and excludes directive is broken.
+meanwhile generate vs 2012 project. then within the solution right click upgrade to vs 2013 version.
+to build premake4 and premake5 get the premake-4.x and premake-core with git clone --recursive path.
+then use old executables to generate project files after running the premake embed cmd to bootstrap.
+premake-5.0.0-alpha13 has both changes below so all binaries have been updated to that version here.
+https://github.com/premake/premake-core/pull/344 & https://github.com/premake/premake-xcode/pull/22.
+
+premake5 or clang has a bug where if similarly named files exist under diff directories builds fail.
+as a work around for now use ifdef define endif header guards while avoiding pragma once for safety.
+
+download sha https://downgit.github.io and versions of premake everywhere are premake-5.0.0-alpha15.

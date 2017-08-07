@@ -1,0 +1,89 @@
+language: cpp
+
+matrix:
+    include:
+        - os: windows
+          env:
+            - TRAVIS_OS_NAME=windows
+        - os: linux
+          dist: bionic
+          sudo: required
+          compiler: gcc
+          env:
+            - TRAVIS_OS_NAME=linux
+        - os: osx
+          osx_image: xcode11.3
+          compiler: clang
+          env:
+            - TRAVIS_OS_NAME=osx
+
+before_install:
+- |
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        choco install vulkan-sdk;
+        export VK_VERSION=$(ls C:\\VulkanSDK);
+        export VK_SDK=C:\\VulkanSDK\\$VK_VERSION;
+        export PATH=$PATH:"c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin";
+        echo ----------------------------;
+        echo $VK_SDK;
+        ls $VK_SDK;
+        echo ----------------------------;
+        echo $VK_SDK\\Bin;
+        ls $VK_SDK\\Bin;
+        echo ----------------------------;
+        echo $VK_SDK\\Bin32;
+        ls $VK_SDK\\Bin32;
+        echo ----------------------------;
+        echo $VK_SDK\\Include;
+        ls $VK_SDK\\Include;
+        echo ----------------------------;
+        echo $VK_SDK\\Lib;
+        ls $VK_SDK\\Lib;
+        echo ----------------------------;
+        echo $VK_SDK\\Lib32;
+        ls $VK_SDK\\Lib32;
+        echo ----------------------------;
+        echo $VK_SDK\\Tools;
+        ls $VK_SDK\\Tools;
+        echo ----------------------------;
+        echo $VK_SDK\\Tools32;
+        ls $VK_SDK\\Tools32;
+        echo ----------------------------;
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        echo "before_install osx";
+    elif [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        sudo apt update -q && sudo apt install -q curl && sudo apt install -q clang-format emscripten git make && sudo apt install -q gobjc++ libglew-dev libvulkan-dev libx11-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev;
+    fi
+before_script:
+- |
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        ./create.bat
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        ./create.sh
+    elif [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        ./create.sh
+    fi
+script:
+- |
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        ./compile.bat
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        ./compile.sh
+    elif [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        ./compile.sh
+    fi
+after_script:
+- |
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        ./clean.bat
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        ./clean.sh
+    elif [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        ./clean.sh
+    fi
+notifications:
+    email:
+        recipients:
+        - narendraumate@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always

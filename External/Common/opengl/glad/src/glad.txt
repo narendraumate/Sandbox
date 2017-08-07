@@ -1,0 +1,3 @@
+This file was renamed from glad.c to glad.cc to work around premake issue.
+Specifying separate build options for c and cpp is currently not possible.
+Details for this issue https://github.com/premake/premake-core/issues/198.

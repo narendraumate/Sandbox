@@ -1,0 +1,2 @@
+- [x] PuzzleVk Linux
+- [x] PuzzleVk Windows

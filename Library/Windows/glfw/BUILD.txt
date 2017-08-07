@@ -1,0 +1,8 @@
+These 2017 libs were manually built from source.
+
+mkdir glfw-build
+cd glfw-build
+cmake .. -DBUILD_SHARED_LIBS=ON
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" GLFW.sln /m /p:Configuration=Release
+
+Output glfw-build\src\Release
